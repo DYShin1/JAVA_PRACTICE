@@ -5,6 +5,8 @@ public class Product {
     private int price;              // 상품가격
     private static String brand;    // 제조사
 
+
+    /* 설명. 생성자를 통한 객체 생성 전에 알고리즘을 적용해야 할 일이 있다면 초기화 블럭을 활용할 수 있다. */
     {
         System.out.println("초기화 블럭 실행...");
         name = "싸이언";
