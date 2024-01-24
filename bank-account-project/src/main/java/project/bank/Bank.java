@@ -28,36 +28,48 @@ public class Bank {
     }
 
     /* 설명. 계좌 삭제 */
-    public String delAccount(int num) {
-        for (int i = 0; i < account.size(); i++) {
-            if(account.get(i).getAccountNumber() == num){
-                account.remove(i);
-                return "계좌번호" + i + "를 삭제 완료 했습니다.";
-            }
+    public int delAccount(int num) {
+        if(findAcc(num) != null){
+            return num;
         }
-        return "계좌가 존재하지 않습니다.";
+        return 0;
     }
 
     /* 설명. SavingAccount 계좌에 이자 지급 */
     public void giveInterest() {
         for (Account arrayList : account) {
-            if (arrayList instanceof SavingAccount) {
-                ((SavingAccount) arrayList).getInterest();
+            if (arrayList instanceof SavingAccount && !(arrayList instanceof StudentAccount)) {
+                ((SavingAccount) arrayList).Interest();
             }
         }
     }
 
+    /* 설명. 계좌 찾는 메소드 */
+    public Account findAcc(int findAcc){
+        for (int i = 0; i < account.size(); i++) {
+            if(account.get(i).getAccountNumber() == findAcc){          // 필기. .get(i).getAccountNumber()을 통해 반복문을 돌리며 계좌를 찾음.
+                return account.get(i);
+            }
+        }
+        return null;
+    }
+    /* 설명. SavingAccount 이자 평균 구하기. */
     public double interestAvgCal(){
         int cnt = 0;
         double interestAvg = 0;
         for(Account accArr : account){
-            if(accArr instanceof SavingAccount && !(accArr instanceof StudentAccount)){   // Saving만 이자 주고 Student는 만기 시에만 이자 줌
+            if(accArr instanceof SavingAccount && !(accArr instanceof StudentAccount)){
                 interestAvg += ((SavingAccount) accArr).getInterest();
                 cnt++;
             }
         }
         interestAvg /= (double)cnt;
         return interestAvg;
+    }
+
+    /* 설명. 수표를 발행 후 계산 */
+    public void payCheck(Account account, double money){
+        ((CheckingAccount)account).bankruptcy(money);
     }
 
 }

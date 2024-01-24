@@ -10,6 +10,7 @@ public class CheckingAccount extends Account {
         this.overdraft = overdraft;
     }
 
+    public double getLoan(){return loan;}
     public void loan(double loan){
         this.loan = loan;
     }
@@ -25,18 +26,19 @@ public class CheckingAccount extends Account {
         return overdraft;
     }
 
-    public void bankruptcy(double overdraft, double pay){
+    public void bankruptcy(double pay){
         if(getBalance() + overdraft >= pay){
             leftmoney = pay - (getBalance() + overdraft);
             loan(leftmoney);
             withdraw(getBalance());
         }else {
+            withdraw(getBalance());
             System.out.println("부도");
         }
     }
 
     @Override
     public String toString(){
-        return "CheckingAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance() + " Overdraft = " + getOverdraft();
+        return "CheckingAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance() + " Overdraft = " + getOverdraft() + " Loan = " + getLoan();
     }
 }

@@ -9,6 +9,7 @@ public class StudentAccount extends SavingAccount {
     private double stdInterest;
     private LocalDate allowWithdraw = LocalDate.of(2030, 1, 1);         // 학생 적금 계좌는 2030년 이후에 인출 가능하다.
     private Period diff = null;
+    private double avgInterest;
 
     public StudentAccount(int a, double interest, double stdInterest) {
         super(a, interest);
@@ -24,7 +25,7 @@ public class StudentAccount extends SavingAccount {
     }
 
     public void avgInterest(int avgInterest){
-        setInterest(avgInterest);
+        this.avgInterest = avgInterest;
     }
 
     /* 필기.
@@ -36,7 +37,7 @@ public class StudentAccount extends SavingAccount {
         diff = Period.between(now, allowWithdraw);
         if(diff.getYears() >= 0){                                   // 2030년 이후 인출이 가능하므로 .getYears 메소드를 사용해 해당 날짜 차이가 0보다 크면 2030년
                                                                     // 이후를 의미하므로 이자를 더하여 인출이 가능하게 한다.
-            deposit(getBalance()*((getInterest() + stdInterest)*0.01));
+            deposit(getBalance()*((stdInterest)*0.01));
         } else{
             System.out.println("적금 만기가 아직 안되었습니다.");
         }
@@ -44,6 +45,7 @@ public class StudentAccount extends SavingAccount {
 
     @Override
     public String toString(){
-        return "StudentAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance();
+        return "StudentAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance() + " stdInterest = " + (avgInterest + getStdInterest());
     }
+
 }
