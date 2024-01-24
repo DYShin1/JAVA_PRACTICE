@@ -20,6 +20,11 @@ public class CheckingAccount extends Account {
      *   그 후 withdraw 메소드의 금액은 0원이 되며, 대출은 loan 메소드에 저장되어 있다.
      *   대출 가능 금액을 넘어서면 부도를 출력한다.
     * */
+
+    public double getOverdraft() {
+        return overdraft;
+    }
+
     public void bankruptcy(double overdraft, double pay){
         if(getBalance() + overdraft >= pay){
             leftmoney = pay - (getBalance() + overdraft);
@@ -32,6 +37,6 @@ public class CheckingAccount extends Account {
 
     @Override
     public String toString(){
-        return "CheckingAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance();
+        return "CheckingAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance() + " Overdraft = " + getOverdraft();
     }
 }

@@ -29,7 +29,7 @@ public class SavingAccount extends Account {
 
     @Override
     public String toString(){
-        return "SavingAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance();
+        return "SavingAccount -> Acc " + getAccountNumber() + ": " + "balance = " + getBalance() + " Interest = " + getInterest();
     }
 
 }
