@@ -30,6 +30,7 @@ public class Bank {
     /* 설명. 계좌 삭제 */
     public int delAccount(int num) {
         if(findAcc(num) != null){
+            account.remove(findAcc(num));
             return num;
         }
         return 0;
