@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  *   후입선출 구조에 stack 또는 재귀함수를 활용한다.
  *   한쪽 분기를 정하여 최대 깊이까지 탐색을 마친 후 다른 쪽 분기로 이동하여
  *   다시 탐색을 수행하는 알고리즘이다.
-* */
+ * */
 public class Application1 {
 
     static boolean[] visit;
@@ -21,7 +21,7 @@ public class Application1 {
     static int node, edge;
 
     /* 설명. 테스트 코드에서 입력 받는 방식을 문제에서 요구하는 대로 작성하고 문자열로 입력 받기 위해 변경 된 코드 */
-    public static BufferedReader toBufferedReader(String str){
+    public static BufferedReader toBufferedReader(String str) {
         InputStream is = new ByteArrayInputStream(str.getBytes());
         return new BufferedReader(new InputStreamReader(is));
     }
@@ -33,13 +33,13 @@ public class Application1 {
         edge = Integer.valueOf(br.readLine());
 
         /* 설명. 노드와 간선에 대한 정보가 담길 map을 작성(node의 갯수에 기반한 int형 2차원 배열) */
-        map = new int[node + 1][node + 1];          // node의 번호와 인덱스 위치를 일치시키기 위해서 크기를 1 증가(0번 인덱스는 사용 X)
+        map = new int[node + 1][node + 1];      // node의 번호와 인덱스 위치를 일치시키기 위해서 크기를 1 증가(0번 인덱스는 사용 X)
 
-        /* 설명. 방문 배열 작성(방문 배열을 작성하는 이유는 방문했던 노드를 다시 stack에 담지 않거나 다시 재귀함수 호출을 하지 않기 위함) */
-        visit = new boolean[node + 1];              // 방문 배열도 노드 번호와 인덱스 번호를 일치 시키기 위해서 1 증가
+        /* 설명. 방문 배열 작성(방문 배열을 작성하는 이유는 방문했던 노드를 다시 stack에 담지 않거나 다시 재귀 함수 호출을 하지 않기 위함) */
+        visit = new boolean[node + 1];          // 방문 배열도 노드 번호와 인덱스 번호를 일치 시키기 위해서 1 증가
 
         /* 설명. 인접리스트(map)로 그래프에 대한 정보 작성 */
-        for (int i = 0; i < edge; i++) {
+        for(int i = 0; i < edge; i++) {
             StringTokenizer str = new StringTokenizer(br.readLine());
 
             int a = Integer.valueOf(str.nextToken());
@@ -57,16 +57,15 @@ public class Application1 {
         return count - 1;
     }
 
-    /* 설명. 재귀함수로 dfs 알고리즘을 구현할 메소드 */
-    private static void dfs(int start) {
+    /* 설명. 재귀 함수로 dfs 알고리즘을 구현할 메소드 */
+    public static void dfs(int start) {
         visit[start] = true;
         count++;
 
         /* 설명. 넘어온 노드와 연관된 노드를 찾는 반복문(기존에 방문하지 않았던) */
-        for (int i = 1; i <= node; i++) {
-            if(map[start][i] == 1 && !visit[i]){
+        for(int i = 1; i <= node; i++) {
+            if(map[start][i] == 1 && !visit[i])
                 dfs(i);
-            }
         }
     }
 }

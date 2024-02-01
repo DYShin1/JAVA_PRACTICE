@@ -46,11 +46,11 @@ public class Application3Tests {
                 arguments(input3, output3)
         );
     }
-    @DisplayName("BFSDFS")
+    @DisplayName("BFS2")
     @Timeout(value = 1000, unit = TimeUnit.MILLISECONDS)
     @ParameterizedTest
     @MethodSource("provideSource")
-    public void BFSDFStest(String input, Integer output) throws Exception {
+    public void BFS2test(String input, Integer output) throws Exception {
         Integer result = Application3.solution(input);
         Assertions.assertEquals(output, result);
     }
