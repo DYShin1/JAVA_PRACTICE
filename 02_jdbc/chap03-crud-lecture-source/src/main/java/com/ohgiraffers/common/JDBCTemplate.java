@@ -24,6 +24,9 @@ public class JDBCTemplate {
 
             con = DriverManager.getConnection(url, prop);
 
+            /* 설명. DML(insert, update, delete)실행 시 커밋을 수동으로 하겠다는 설정 */
+            con.setAutoCommit(false);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -64,5 +67,21 @@ public class JDBCTemplate {
         }
     }
 
+    public static void commit(Connection con){
+        try {
+            if(con != null && !con.isClosed())
+                con.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
+    public static void rollback(Connection con){
+        try {
+            if(con != null && !con.isClosed())
+                con.rollback();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -6,7 +6,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
+import static com.ohgiraffers.common.JDBCTemplate.close;
 import static com.ohgiraffers.common.JDBCTemplate.getConnection;
+
+/* 설명.
+ *  PreparedState4ment는 Statement와 달리
+* */
 
 public class Application2 {
     public static void main(String[] args) {
@@ -23,12 +28,26 @@ public class Application2 {
             System.out.print("사번을 입력하세요: ");
             int empId = sc.nextInt();
 
+            String entYn = "N";
+
             /* 설명. 입력받은 사번을 활용한 쿼리 작성 */
-            String query = "SELECT EMP_ID, EMP_NAME, FROM EMPLOYEE WHERE EMP_ID = '" + empId + "'";
+            String query = "SELECT EMP_ID, EMP_NAME, FROM EMPLOYEE WHERE EMP_ID = '" + empId + " " ;
             System.out.println("query = " + query);
+
+            rset = stmt.executeQuery(query);
+
+            if(rset.next()){
+                System.out.println(rset.getString("EMP_ID") + ", " + rset.getString("EMP_NAME"));
+            } else {
+                System.out.println("해당 사원의 조회 결과가 없습니다.");
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } finally {
+            close(rset);
+            close(stmt);
+            close(con);
         }
 
     }
