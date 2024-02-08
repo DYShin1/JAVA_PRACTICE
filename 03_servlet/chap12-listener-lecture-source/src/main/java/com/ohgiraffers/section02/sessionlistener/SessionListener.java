@@ -39,7 +39,7 @@ public class SessionListener implements HttpSessionListener, HttpSessionAttribut
     }
 
     /* 설명. Binding 리스너는 SessionListener가 아닌 Session에 담기는 타입의 클래스에 직접 각각 정의해야 한다. */
-    /*@Override
+    /* @Override
     public void valueBound(HttpSessionBindingEvent event) {
         System.out.println("bound!!");
     }
@@ -47,6 +47,6 @@ public class SessionListener implements HttpSessionListener, HttpSessionAttribut
     @Override
     public void valueUnbound(HttpSessionBindingEvent event) {
         System.out.println("unbound!!");
-    }*/
+    } */
 
 }
