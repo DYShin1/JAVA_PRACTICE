@@ -24,6 +24,7 @@ public class PasswordEncryptFilter implements Filter {
         RequestWrapper wrapper = new RequestWrapper((HttpServletRequest) request);
 
         chain.doFilter(wrapper, response);
+        System.out.println("wrapper실행");
     }
 
     @Override

@@ -11,6 +11,7 @@ public class RequestWrapper extends HttpServletRequestWrapper {
 
     @Override
     public String getParameter(String key) {
+        System.out.println("Bcryptpassword 실행");
 
         /* 설명. 'password'라는 키 값으로 getParameter 사용 시에 그 반환값은 암호화 해서 반환 */
         String value = "";
