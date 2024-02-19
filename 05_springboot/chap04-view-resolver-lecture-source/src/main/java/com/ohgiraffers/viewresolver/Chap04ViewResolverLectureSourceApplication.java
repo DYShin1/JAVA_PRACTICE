@@ -1,13 +1,13 @@
-package com.ohgiraffers.requestmapping;
+package com.ohgiraffers.viewresolver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Chap02RequestMappingLectureSourceApplication {
+public class Chap04ViewResolverLectureSourceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Chap02RequestMappingLectureSourceApplication.class, args);
+        SpringApplication.run(Chap04ViewResolverLectureSourceApplication.class, args);
     }
 
 }
