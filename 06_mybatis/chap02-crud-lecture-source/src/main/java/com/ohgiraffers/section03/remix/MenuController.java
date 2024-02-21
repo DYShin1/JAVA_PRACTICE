@@ -1,6 +1,7 @@
 package com.ohgiraffers.section03.remix;
 
 import java.util.List;
+import java.util.Map;
 
 public class MenuController {
 
@@ -20,6 +21,59 @@ public class MenuController {
             printResult.printMenus(menus);
         } else {
             printResult.printErrorMessage("전체 메뉴 조회 실패!");
+        }
+    }
+
+    public void findMenuByMenuCode(Map<String, String> parameter) {
+
+        int menuCode = Integer.valueOf(parameter.get("menuCode"));
+
+        MenuDTO menu = menuService.findMenuByMenuCode(menuCode);
+
+        printResult.printMenuCodeMessage(menu);
+    }
+
+    public void registMenu(Map<String, String> parameter) {
+        String menuName = parameter.get("menuName");
+        int menuPrice = Integer.valueOf(parameter.get("menuPrice"));
+        int categoryCode = Integer.valueOf(parameter.get("categoryCode"));
+
+        MenuDTO menu = new MenuDTO();
+        menu.setMenuName(menuName);
+        menu.setMenuPrice(menuPrice);
+        menu.setCategoryCode(categoryCode);
+
+        if(menuService.registMenu(menu)){
+            printResult.printSuccessMessage("regist");
+        }else {
+            printResult.printErrorMessage("메뉴 추가 실패!");
+        }
+    }
+
+    public void modifyMenu(Map<String, String> parameter) {
+        int menuCode = Integer.valueOf(parameter.get("menuCode"));
+        String menuName = parameter.get("menuName");
+        int menuPrice = Integer.valueOf(parameter.get("menuPrice"));
+
+        MenuDTO menu = new MenuDTO();
+        menu.setMenuCode(menuCode);
+        menu.setMenuName(menuName);
+        menu.setMenuPrice(menuPrice);
+
+        if(menuService.modifyMenu(menu)){
+            printResult.printSuccessMessage("modify");
+        }else {
+            printResult.printErrorMessage("메뉴 추가 실패!");
+        }
+    }
+
+    public void removeMenu(Map<String, String> parameter) {
+        int menuCode = Integer.valueOf(parameter.get("menuCode"));
+
+        if(menuService.removeMenu(menuCode)){
+            printResult.printSuccessMessage("remove");
+        }else {
+            printResult.printErrorMessage("메뉴 추가 실패!");
         }
     }
 }

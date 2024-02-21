@@ -3,6 +3,8 @@ package com.ohgiraffers.section03.remix;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Map;
+
 import static com.ohgiraffers.section03.remix.Template.getSqlSession;
 
 /* 설명.
@@ -20,8 +22,64 @@ public class MenuService {
         MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
 
         List<MenuDTO> menus = menuMapper.selectAllMenus();
+        sqlSession.close();
         System.out.println("remix 방식으로 service 계층까지 잘 조회되어 오는지 확인");
 
         return menus;
+    }
+
+    public MenuDTO findMenuByMenuCode(int menuCode) {
+        SqlSession sqlSession = getSqlSession();
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        MenuDTO menus = menuMapper.selectMenus(menuCode);
+        sqlSession.close();
+
+        return menus;
+    }
+
+    public boolean registMenu(MenuDTO menu) {
+        SqlSession sqlSession = getSqlSession();
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int menus = menuMapper.insertMenu(menu);
+
+        if(menus > 0){
+            sqlSession.commit();
+        } else{
+            sqlSession.rollback();
+        }
+
+        return (menus > 0) ? true : false;
+    }
+
+    public boolean modifyMenu(MenuDTO menu) {
+        SqlSession sqlSession = getSqlSession();
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int menus = menuMapper.updateMenu(menu);
+
+        if(menus > 0){
+            sqlSession.commit();
+        } else{
+            sqlSession.rollback();
+        }
+
+        return (menus > 0) ? true : false;
+    }
+
+    public boolean removeMenu(int menuCode) {
+        SqlSession sqlSession = getSqlSession();
+        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
+
+        int menus = menuMapper.deleteMenu(menuCode);
+
+        if(menus > 0){
+            sqlSession.commit();
+        } else{
+            sqlSession.rollback();
+        }
+
+        return (menus > 0) ? true : false;
     }
 }

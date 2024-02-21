@@ -20,4 +20,12 @@ public class PrintResult {
         }
         System.out.println("successMessage = " + successMessage);
     }
+
+    public void printMenuCodeMessage(MenuDTO menu) {
+        if(menu != null){
+            System.out.println("menu = " + menu);
+        } else{
+            System.out.println("존재하지 않는 메뉴입니다.");
+        }
+    }
 }
