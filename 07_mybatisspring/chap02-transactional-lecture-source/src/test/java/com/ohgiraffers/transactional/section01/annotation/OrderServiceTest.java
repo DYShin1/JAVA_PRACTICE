@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -16,11 +17,17 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+
+/* 설명. DML(insert, update, delete) 작업 테스트 시 실제 DB 적용을 안 하려면 @Transactional 어노테이션을 추가한다. */
+@Transactional
+
 class OrderServiceTest {
 
     @Autowired
     private OrderService registOrderService;
-    private static Stream<Arguments> getOrderInfo(){
+
+
+    private static Stream<Arguments> getOrderInfo() {
 
         OrderDTO orderInfo = new OrderDTO();
         orderInfo.setOrderDate(LocalDate.now());
@@ -33,15 +40,18 @@ class OrderServiceTest {
                 )
         );
 
-        return Stream.of(Arguments.of(orderInfo));
+        return Stream.of(
+                Arguments.of(orderInfo)
+        );
     }
 
     @DisplayName("주문 등록 테스트")
     @ParameterizedTest
     @MethodSource("getOrderInfo")
-    void testRegistNewOrder(OrderDTO orderInfo){
+    void testRegistNewOrder(OrderDTO orderInfo) {
         Assertions.assertDoesNotThrow(
                 () -> registOrderService.registNewOrder(orderInfo)
         );
     }
+
 }

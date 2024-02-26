@@ -1,17 +1,16 @@
-package com.ohgiraffers.mybatisspring.section01.factorybean;
+package com.ohgiraffers.section01.problem;
 
-public class MenuDTO {
-
+public class Menu {
     private int menuCode;
     private String menuName;
     private int menuPrice;
     private int categoryCode;
     private String orderableStatus;
 
-    public MenuDTO() {
+    public Menu() {
     }
 
-    public MenuDTO(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
+    public Menu(int menuCode, String menuName, int menuPrice, int categoryCode, String orderableStatus) {
         this.menuCode = menuCode;
         this.menuName = menuName;
         this.menuPrice = menuPrice;
@@ -61,7 +60,7 @@ public class MenuDTO {
 
     @Override
     public String toString() {
-        return "MenuDTO{" +
+        return "Menu{" +
                 "menuCode=" + menuCode +
                 ", menuName='" + menuName + '\'' +
                 ", menuPrice=" + menuPrice +

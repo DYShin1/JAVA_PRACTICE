@@ -22,7 +22,7 @@
         <appender-ref ref="console" />
     </logger>
 
-    <!-- resultset제외한 모든 jdbc 호출 정보 출력  -->
+    <!-- resultset제외한 모든 jdbc 호출 정보 출력 -->
     <logger name="jdbc.audit" additivity="false">
         <level value="info" />
         <appender-ref ref="console" />
