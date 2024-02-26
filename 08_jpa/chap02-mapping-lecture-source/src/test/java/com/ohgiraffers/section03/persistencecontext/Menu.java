@@ -1,4 +1,4 @@
-package com.ohgiraffers.section02.crud;
+package com.ohgiraffers.section03.persistencecontext;
 
 import jakarta.persistence.*;
 
