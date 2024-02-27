@@ -2,13 +2,13 @@ package com.ohgiraffers.section03.persistencecontext;
 
 import jakarta.persistence.*;
 
-@Entity(name = "section02_menu")        // 엔티티 객체로 만들기 위한 어노테이션, 다른 패키지에 동일한 이름의 클래스가 존재하면 안됨
+@Entity(name = "section03_menu")        // 엔티티 객체로 만들기 위한 어노테이션, 다른 패키지에 동일한 이름의 클래스가 존재하면 안됨
 @Table(name = "tbl_menu")               // 데이터베이스에 매핑 될 테이블 이름 설중
 public class Menu {
 
     @Id                                  // PK에 해당하는 속성에 지정
     @Column(name = "menu_code")         // 데이터베이스에 대응되는 컬럼명 지정
-    @GeneratedValue(strategy = GenerationType.IDENTITY)         // 기본키 값을 데이터베이스에 생성하도록 지정(PK 제약조건)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)         // 기본키 값을 데이터베이스에 생성하도록 지정(PK 제약조건)
                                                                 // 데이터베이스는 테이블에 새로운 행이 추가될 때 마다 기본키 열에 고유한 값을 자동으로 설정
     private int menuCode;
 
