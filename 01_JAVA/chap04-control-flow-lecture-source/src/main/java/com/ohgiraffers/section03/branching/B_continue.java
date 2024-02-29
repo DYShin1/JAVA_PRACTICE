@@ -15,9 +15,7 @@ public class B_continue {
 //                  아래 출력을 건너뛴다.
 
             if(!(i % 4 == 0 && i % 5 == 0))  continue;             //조건문 또는 반복문의 실행 구문이 하나일 때는 중괄호({}) 생략 가능
-
-         }
             System.out.println("i = " + i);
+         }
         }
     }
-}

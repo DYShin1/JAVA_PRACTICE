@@ -1,16 +1,21 @@
-package com.ohgiraffers.section03.primarykey.subsection01.identify;
+package com.ohgiraffers.section03.primarykey.subsection02.table;
 
 import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name="member_section03_subsection01")
-@Table(name = "tbl_member_section03_subsection01")
+@Entity(name="member_section03_subsection03")
+@Table(name = "tbl_member_section03_subsection03")
+@TableGenerator(
+        name = "member_seq_table_generator",
+        table = "tbl_my_sequence",
+        pkColumnValue = "my_seq_member_no"
+)
 public class Member {
 
     @Id
     @Column(name = "member_no")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int memberNo;
     @Column(name = "member_id")
     private String memberId;

@@ -2,7 +2,7 @@ package com.ohgiraffers.springdatajpa.common;
 
 import org.springframework.data.domain.Page;
 
-public class Pagenation {
+public class Pagination {
 
     /* 설명. PagingButtonInfo를 생성해서(버튼 생성에 필요한 정보들 생성) 반환하는 static 메소드 */
     public static PagingButtonInfo getPagingButtonInfo(Page page){

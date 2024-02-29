@@ -1,15 +1,16 @@
-package com.ohgiraffers.section02.column;
+package com.ohgiraffers.section03.primarykey.subsection01.identify;
 
 import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name="member_section02")
-@Table(name = "tbl_member_section01")
+@Entity(name="member_section03_subsection01")
+@Table(name = "tbl_member_section03_subsection01")
 public class Member {
 
     @Id
     @Column(name = "member_no")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int memberNo;
     @Column(name = "member_id")
     private String memberId;
@@ -27,7 +28,7 @@ public class Member {
 //    @Temporal(TemporalType.TIMESTAMP)           // DateTime
     @Temporal(TemporalType.DATE)           // Date
 //    @Temporal(TemporalType.TIME)           // Time
-    private java.util.Date enrollDate;
+    private Date enrollDate;
     @Column(name = "member_role")
     private String memberRole;
     @Column(name = "status")

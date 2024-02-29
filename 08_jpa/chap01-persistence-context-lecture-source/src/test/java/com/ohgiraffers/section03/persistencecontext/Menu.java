@@ -11,7 +11,6 @@ public class Menu {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)         // 기본키 값을 데이터베이스에 생성하도록 지정(PK 제약조건)
                                                                 // 데이터베이스는 테이블에 새로운 행이 추가될 때 마다 기본키 열에 고유한 값을 자동으로 설정
     private int menuCode;
-
     @Column(name = "menu_name")
     private String menuName;
     @Column(name = "menu_price")
